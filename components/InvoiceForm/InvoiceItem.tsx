@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
   item: {
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
-    marginBottom: 16,
+    marginTop: 8,
+    marginBottom: 8,
     paddingBottom: 6,
   },
   row: {
@@ -61,7 +62,6 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    marginRight: 8,
     marginBottom: 8,
     borderWidth: 1,
     borderRadius: 3,

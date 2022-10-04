@@ -1,3 +1,5 @@
+export const dateToString = (date: Date) => date.toISOString().split("T")[0];
+
 export const getInvoiceNo = (invoiceDate: string, index: number = 1) => {
   const date =
     typeof invoiceDate === "string" ? new Date(invoiceDate) : invoiceDate;

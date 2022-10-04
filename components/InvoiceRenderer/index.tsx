@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Text } from 'react-native';
 import { InvoiceRendererProps } from "../../types";
 
 const InvoiceRenderer = ({ invoice }: InvoiceRendererProps) => {
@@ -7,7 +8,7 @@ const InvoiceRenderer = ({ invoice }: InvoiceRendererProps) => {
     console.log("invoice", invoice);
   }, [invoice]);
 
-  return <div>InvoiceRenderer</div>;
+  return <Text>InvoiceRenderer</Text>;
 };
 
 export default InvoiceRenderer;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, TextInput, StyleSheet, Pressable } from "react-native";
+import { View, Text, TextInput, StyleSheet, Pressable, Platform } from "react-native";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { FieldArray } from "formik";
 import type { InvoiceFormProps } from "../../types";
@@ -30,7 +30,7 @@ const InvoiceForm = ({
 
   return (
     <View style={styles.view}>
-      <label style={styles.label}>
+      <View style={styles.label}>
         <Text style={styles.text}>Invoice No.</Text>
         <TextInput
           style={styles.input}
@@ -38,8 +38,8 @@ const InvoiceForm = ({
           onBlur={handleBlur("invoiceNo")}
           value={values.invoiceNo}
         />
-      </label>
-      <label style={styles.label}>
+      </View>
+      <View style={styles.label}>
         <Text style={styles.text}>Invoice Date</Text>
         <DatePicker
           handleBlur={handleBlur}
@@ -48,8 +48,8 @@ const InvoiceForm = ({
           value={values.invoiceDate}
           field="invoiceDate"
         />
-      </label>
-      <label style={styles.label}>
+      </View>
+      <View style={styles.label}>
         <Text style={styles.text}>Delivery Date</Text>
         <DatePicker
           handleBlur={handleBlur}
@@ -58,8 +58,8 @@ const InvoiceForm = ({
           value={values.deliveryDate}
           field="deliveryDate"
         />
-      </label>
-      <label style={styles.label}>
+      </View>
+      <View style={styles.label}>
         <Text style={styles.text}>Payment Due Date</Text>
         <DatePicker
           handleBlur={handleBlur}
@@ -68,8 +68,8 @@ const InvoiceForm = ({
           value={values.paymentDue}
           field="paymentDue"
         />
-      </label>
-      <label style={styles.label}>
+      </View>
+      <View style={styles.label}>
         <Text style={styles.text}>Payment Method</Text>
         <TextInput
           style={styles.input}
@@ -78,7 +78,7 @@ const InvoiceForm = ({
           value={values.paymentMethod}
           editable={false}
         />
-      </label>
+      </View>
       {/* <Text style={styles.text}>Account No.</Text>
       <Text style={styles.text}>Seller</Text>
       <Text style={styles.text}>Bill To</Text> */}
@@ -111,23 +111,18 @@ const InvoiceForm = ({
 
 const styles = StyleSheet.create({
   view: {
-    width: 400,
-    margin: "auto",
-    alignItems: "center",
+    marginTop: 16,
   },
   label: {
-    display: "flex",
-    alignItems: "center",
-    margin: 10,
+    marginBottom: 8,
   },
   text: {
-    textAlign: "right",
+    ...(Platform.OS === 'web' ? { textAlign: "right" } : {}),
     width: 160,
     marginRight: 16,
   },
   input: {
     height: 40,
-    width: 200,
     borderWidth: 1,
     borderRadius: 3,
     padding: 10,

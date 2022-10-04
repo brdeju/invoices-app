@@ -1,7 +1,8 @@
 import React, { useState, CSSProperties } from "react";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { Platform, Pressable, TextInput } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { Platform, Pressable, Text, TextInput } from "react-native";
 import { DatePickerProps } from "../../types";
+import { dateToString } from "../../helpers/invoice";
 
 const DatePicker = ({
   styles,
@@ -11,16 +12,20 @@ const DatePicker = ({
   field,
 }: DatePickerProps) => {
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [date, setDate] = useState();
+  const [date, setDate] = useState<Date>(value ? new Date(value) : new Date());
 
   const openDatepicker = () => {
     setShowDatePicker(true);
   };
 
-  const onDateChange = (event: any, selectedDate: any) => {
-    const currentDate = selectedDate;
+  const closeDatepicker = () => {
     setShowDatePicker(false);
-    setDate(currentDate);
+  };
+
+  const onDateChange = (selectedDate: Date) => {
+    setShowDatePicker(false);
+    setDate(selectedDate);
+    handleChange(field)(dateToString(selectedDate))
   };
 
   return (
@@ -35,23 +40,18 @@ const DatePicker = ({
         />
       ) : (
         <Pressable onPress={openDatepicker}>
-          <TextInput
-            style={styles}
-            editable={false}
-            onBlur={handleBlur(field)}
-            value={value}
-          />
+          <Text style={styles}>{value}</Text>
         </Pressable>
       )}
 
-      {Platform.OS !== "web" && showDatePicker && (
-        <DateTimePicker
-          value={date ? new Date(date) : new Date()}
-          mode="date"
-          is24Hour={true}
-          onChange={onDateChange}
-        />
-      )}
+      {Platform.OS !== "web" && <DateTimePickerModal
+        date={date}
+        isVisible={showDatePicker}
+        mode="date"
+        onConfirm={onDateChange}
+        onCancel={closeDatepicker}
+      />
+      }
     </>
   );
 };
