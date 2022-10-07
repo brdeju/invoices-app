@@ -27,7 +27,7 @@ const InvoiceRenderer = ({
     <View style={styles.invoice}>
       <Details invoice={invoice} />
 
-      <View style={styles.contractors}>
+      {/* <View style={styles.contractors}>
         <Seller seller={invoice.seller} />
         <Buyer buyer={invoice.buyer} />
       </View>
@@ -41,25 +41,25 @@ const InvoiceRenderer = ({
 
       <ReverseCharge />
 
-      <Signatures />
+      <Signatures /> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   invoice: {
-    width: "210mm",
-    height: "297mm",
+    width: 210,
+    height: 297,
     backgroundColor: "white",
-    paddingVertical: "25mm",
-    paddingHorizontal: "15mm",
+    paddingVertical: 25,
+    paddingHorizontal: 15,
   },
   contractors: {
     display: "flex",
     fontSize: "0.9em",
     paddingBottom: "5px",
     borderBottom: "2px solid rgb(147, 147, 147)",
-    marginBottom: "8mm",
+    marginBottom: 8,
   },
   summary: {},
 });

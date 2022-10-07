@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 const ReverseCharge = () => {
   // TODO: implement support for other currencies
@@ -7,10 +7,10 @@ const ReverseCharge = () => {
   if (!exchangeRate) return null;
   return (
     <View style={styles.exchange}>
-      <p>Odwrotne obciążenie / Reverse charge</p>
-      <p>1 EUR = {(exchangeRate as any).value} PLN</p>
-      <p>Kurs z dnia: {(exchangeRate as any).date}</p>
-      <p>Numer tabeli: {(exchangeRate as any).id}</p>
+      <Text>Odwrotne obciążenie / Reverse charge</Text>
+      <Text>1 EUR = {(exchangeRate as any).value} PLN</Text>
+      <Text>Kurs z dnia: {(exchangeRate as any).date}</Text>
+      <Text>Numer tabeli: {(exchangeRate as any).id}</Text>
     </View>
   );
 };

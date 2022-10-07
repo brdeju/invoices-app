@@ -6,9 +6,10 @@ import type { Buyer } from "../../types";
 const BuyerDetails = ({ buyer }: { buyer: Buyer }) => {
   return (
     <View style={styles.view}>
-      <Text style={styles.header}>
-        <Text style={styles.bold}>Nabywca</Text> / Bill to
-      </Text>
+      <View>
+        <Text style={styles.bold}>Nabywca</Text>
+        <Text> / Bill to</Text>
+      </View>
 
       <Text>{buyer.name}</Text>
       <AddressDetails address={buyer.address} />

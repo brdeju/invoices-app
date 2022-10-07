@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { StyleSheet, View, Text } from "react-native";
 import { getInWord } from "../../helpers/invoice";
 import { formatNumber } from "../../helpers/number";
 import type { Totals } from "../../types";
@@ -11,29 +12,29 @@ const Summaries = ({ total }: { total: Totals }) => {
     <table className="to-pay">
       <tbody>
         <tr>
-          <td>Zapłacono / Already Paid</td>
-          <td className="number-value">{formatNumber(alreadyPaid)} PLN</td>
+          <td><Text>Zapłacono / Already Paid</Text></td>
+          <td className="number-value"><Text>{formatNumber(alreadyPaid)} PLN</Text></td>
         </tr>
 
         <tr>
-          <td>Do zapłaty / Total Due</td>
+          <td><Text>Do zapłaty / Total Due</Text></td>
           <td className="number-value">
-            <strong>{formatNumber(total.brutto - alreadyPaid)} PLN</strong>
+            <Text>{formatNumber(total.brutto - alreadyPaid)} PLN</Text>
           </td>
         </tr>
 
         <tr>
-          <td>Razem / Total</td>
-          <td className="number-value">{formatNumber(total.brutto)} PLN</td>
+          <td><Text>Razem / Total</Text></td>
+          <td className="number-value"><Text>{formatNumber(total.brutto)} PLN</Text></td>
         </tr>
 
         <tr>
-          <td>Słownie / In words</td>
+          <td><Text>Słownie / In words</Text></td>
         </tr>
 
         <tr>
           <td colSpan={2} className="number-value">
-            {inWords}
+            <Text>{inWords}</Text>
           </td>
         </tr>
       </tbody>

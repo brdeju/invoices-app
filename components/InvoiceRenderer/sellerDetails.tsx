@@ -6,9 +6,9 @@ import type { Seller } from "../../types";
 const SellerDetails = ({ seller }: { seller: Seller }) => {
   return (
     <View style={styles.view}>
-      <Text style={styles.header}>
-        <Text style={styles.bold}>Sprzedawca</Text> / Seller
-      </Text>
+      <View>
+        <Text style={styles.bold}>Sprzedawca</Text><Text> / Seller</Text>
+      </View>
 
       <Text>{seller.name}</Text>
       <Address address={seller.address} />

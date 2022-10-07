@@ -1,4 +1,5 @@
 import React from "react";
+import { Text } from 'react-native';
 import ItemRow from "./itemRow";
 import type { Item } from "../../types";
 
@@ -8,44 +9,36 @@ const ItemsTable = ({ items }: { items: Item[] }) => {
       <thead>
         <tr className="header-row">
           <td>
-            Lp
-            <br />
-            No
+            <Text>Lp</Text>
+            <Text>No</Text>
           </td>
           <td>
-            Nazwa
-            <br />
-            Description
+            <Text>Nazwa</Text>
+            <Text>Description</Text>
           </td>
           <td className="unit-col">
-            Jedn.
-            <br />
-            Unit
+            <Text>Jedn.</Text>
+            <Text>Unit</Text>
           </td>
           <td>
-            Ilość
-            <br />
-            Qty
+            <Text>Ilość</Text>
+            <Text>Qty</Text>
           </td>
           <td className="unit-price">
-            Cena netto
-            <br />
-            Unit price
+            <Text>Cena netto</Text>
+            <Text>Unit price</Text>
           </td>
           <td>
-            Stawka
-            <br />
-            Tax Rate
+            <Text>Stawka</Text>
+            <Text>Tax Rate</Text>
           </td>
           <td className="total-price">
-            Wartość netto
-            <br />
-            Total Excl. Tax
+            <Text>Wartość netto</Text>
+            <Text>Total Excl. Tax</Text>
           </td>
           <td className="total-price">
-            Wartość brutto
-            <br />
-            Total Incl. Tax
+            <Text>Wartość brutto</Text>
+            <Text>Total Incl. Tax</Text>
           </td>
         </tr>
       </thead>
