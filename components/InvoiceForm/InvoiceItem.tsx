@@ -4,15 +4,18 @@ import { Unit } from "../../helpers/enums";
 import { InvoiceItemProps } from "../../types";
 
 const InvoiceItem = ({ index, item, arrayHelpers }: InvoiceItemProps) => {
-  arrayHelpers.form.handleBlur
   return (
     <View style={styles.item}>
       <TextInput
+        multiline
         style={styles.input}
-        onChangeText={arrayHelpers.form.handleChange(`items[${index}].description`)}
+        onChangeText={arrayHelpers.form.handleChange(
+          `items[${index}].description`
+        )}
         onBlur={arrayHelpers.form.handleBlur(`items[${index}].description`)}
         placeholder="Description"
         value={item.description || ""}
+        numberOfLines={3}
       />
       <View style={styles.row}>
         <TextInput
@@ -25,7 +28,9 @@ const InvoiceItem = ({ index, item, arrayHelpers }: InvoiceItemProps) => {
         <TextInput
           style={styles.input}
           keyboardType="numeric"
-          onChangeText={arrayHelpers.form.handleChange(`items[${index}].quantity`)}
+          onChangeText={arrayHelpers.form.handleChange(
+            `items[${index}].quantity`
+          )}
           onBlur={arrayHelpers.form.handleBlur(`items[${index}].quantity`)}
           placeholder="Quantity"
           value={item.quantity || ""}
@@ -51,7 +56,7 @@ const InvoiceItem = ({ index, item, arrayHelpers }: InvoiceItemProps) => {
 
 const styles = StyleSheet.create({
   item: {
-    borderBottomColor: '#ccc',
+    borderBottomColor: "#ccc",
     borderBottomWidth: 1,
     marginTop: 8,
     marginBottom: 8,
@@ -61,7 +66,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   input: {
-    height: 40,
     marginBottom: 8,
     borderWidth: 1,
     borderRadius: 3,

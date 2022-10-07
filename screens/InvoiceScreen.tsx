@@ -2,7 +2,7 @@ import { StyleSheet, SafeAreaView, ScrollView, StatusBar } from "react-native";
 import { Formik } from "formik";
 import InvoiceForm from "../components/InvoiceForm";
 import { RootTabScreenProps, InvoiceForm as InvoiceFormType } from "../types";
-import { invoiceInitialValues } from "../helpers/constants";
+import { EPAM_DEFAULT_TEMPLATE } from "../data/invoices";
 
 export default function InvoiceScreen({
   navigation,
@@ -15,7 +15,7 @@ export default function InvoiceScreen({
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <Formik
-          initialValues={invoiceInitialValues}
+          initialValues={EPAM_DEFAULT_TEMPLATE}
           onSubmit={handleInvoiceCreate}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (

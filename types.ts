@@ -9,7 +9,7 @@ import {
 } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StyleProp, TextStyle } from "react-native";
-import { FieldArrayRenderProps } from 'formik';
+import { FieldArrayRenderProps } from "formik";
 import { PaymentMethod, Unit } from "./helpers/enums";
 
 declare global {
@@ -40,16 +40,16 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
 export type Address = {
   street: string;
   number: string;
-  code: string;
+  zip: string;
   city: string;
   country: string;
-}
+};
 export type Bank = {
   name: string;
   address: Address;
   swift: string;
   number: string;
-}
+};
 export type Seller = {
   name: string;
   address: Address;
@@ -60,15 +60,16 @@ export type Buyer = {
   name: string;
   address: Address;
   id: string;
-}
+};
 export type Item = {
+  index: number;
   description: string;
   unit: Unit;
   quantity: string;
   price: string;
   tax: string;
   currency?: string;
-}
+};
 export type InvoiceForm = {
   invoiceNo: string;
   invoiceDate: string;
@@ -78,6 +79,13 @@ export type InvoiceForm = {
   seller: Seller;
   buyer: Buyer;
   items: Item[];
+};
+export type Totals = {
+  taxLabel: string;
+  tax: number;
+  netto: number;
+  vat: number;
+  brutto: number;
 };
 
 export type InvoiceFormProps = {
@@ -91,7 +99,7 @@ export type InvoiceItemProps = {
   index: number;
   item: Item;
   arrayHelpers: FieldArrayRenderProps;
-}
+};
 
 export type InvoiceRendererProps = {
   invoice: InvoiceForm;
@@ -104,5 +112,3 @@ export type DatePickerProps = {
   value: string;
   field: string;
 };
-
-

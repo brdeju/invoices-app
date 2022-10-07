@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
-import { View, Text, TextInput, StyleSheet, Pressable, Platform } from "react-native";
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  Platform,
+} from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { FieldArray } from "formik";
 import type { InvoiceFormProps } from "../../types";
 import DatePicker from "../DatePicker";
@@ -30,55 +37,40 @@ const InvoiceForm = ({
 
   return (
     <View style={styles.view}>
-      <View style={styles.label}>
-        <Text style={styles.text}>Invoice No.</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={handleChange("invoiceNo")}
-          onBlur={handleBlur("invoiceNo")}
-          value={values.invoiceNo}
-        />
-      </View>
-      <View style={styles.label}>
-        <Text style={styles.text}>Invoice Date</Text>
-        <DatePicker
-          handleBlur={handleBlur}
-          handleChange={handleChange}
-          styles={styles.input}
-          value={values.invoiceDate}
-          field="invoiceDate"
-        />
-      </View>
-      <View style={styles.label}>
-        <Text style={styles.text}>Delivery Date</Text>
-        <DatePicker
-          handleBlur={handleBlur}
-          handleChange={handleChange}
-          styles={styles.input}
-          value={values.deliveryDate}
-          field="deliveryDate"
-        />
-      </View>
-      <View style={styles.label}>
-        <Text style={styles.text}>Payment Due Date</Text>
-        <DatePicker
-          handleBlur={handleBlur}
-          handleChange={handleChange}
-          styles={styles.input}
-          value={values.paymentDue}
-          field="paymentDue"
-        />
-      </View>
-      <View style={styles.label}>
-        <Text style={styles.text}>Payment Method</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={handleChange("paymentMethod")}
-          onBlur={handleBlur("paymentMethod")}
-          value={values.paymentMethod}
-          editable={false}
-        />
-      </View>
+      <TextInput
+        style={styles.input}
+        onChangeText={handleChange("invoiceNo")}
+        onBlur={handleBlur("invoiceNo")}
+        value={values.invoiceNo}
+      />
+      <DatePicker
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        styles={styles.input}
+        value={values.invoiceDate}
+        field="invoiceDate"
+      />
+      <DatePicker
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        styles={styles.input}
+        value={values.deliveryDate}
+        field="deliveryDate"
+      />
+      <DatePicker
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        styles={styles.input}
+        value={values.paymentDue}
+        field="paymentDue"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={handleChange("paymentMethod")}
+        onBlur={handleBlur("paymentMethod")}
+        value={values.paymentMethod}
+        editable={false}
+      />
       {/* <Text style={styles.text}>Account No.</Text>
       <Text style={styles.text}>Seller</Text>
       <Text style={styles.text}>Bill To</Text> */}
@@ -95,8 +87,16 @@ const InvoiceForm = ({
               />
             ))}
 
-            <Pressable onPress={arrayHelpers.handlePush({})}>
-              <Text style={styles.add}>Add Item<FontAwesome name="plus-circle" size={32} color="blue" style={styles.addIcon} /></Text>
+            <Pressable onPress={arrayHelpers.handlePush({ index: values.items.length })}>
+              <Text style={styles.add}>
+                Add Item
+                <FontAwesome
+                  name="plus-circle"
+                  size={32}
+                  color="blue"
+                  style={styles.addIcon}
+                />
+              </Text>
             </Pressable>
           </View>
         )}
@@ -113,11 +113,8 @@ const styles = StyleSheet.create({
   view: {
     marginTop: 16,
   },
-  label: {
-    marginBottom: 8,
-  },
   text: {
-    ...(Platform.OS === 'web' ? { textAlign: "right" } : {}),
+    ...(Platform.OS === "web" ? { textAlign: "right" } : {}),
     width: 160,
     marginRight: 16,
   },
@@ -126,12 +123,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 3,
     padding: 10,
+    marginBottom: 10,
     boxSizing: "border-box",
     backgroundColor: "white",
   },
   add: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   addIcon: {
     marginLeft: 8,
